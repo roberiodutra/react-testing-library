@@ -1,8 +1,9 @@
+import React from 'react';
 import { screen, render } from '@testing-library/react';
-import renderWithRouter from '../components/renderWithRouter';
 import userEvent from '@testing-library/user-event';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
+import renderWithRouter from '../components/renderWithRouter';
 import App from '../App';
 
 describe('Test App component', () => {
@@ -22,21 +23,21 @@ describe('Test App component', () => {
   it('Redirect to home "/', () => {
     const homeLink = screen.getByRole('link', { name: /home/i });
     userEvent.click(homeLink);
-    const heading = screen.getByText("Encountered pokémons");
+    const heading = screen.getByText('Encountered pokémons');
     expect(heading).toBeInTheDocument();
   });
 
   it('Redirect to /about', () => {
     const aboutLink = screen.getByRole('link', { name: /about/i });
     userEvent.click(aboutLink);
-    const heading = screen.getByText("About Pokédex");
+    const heading = screen.getByText('About Pokédex');
     expect(heading).toBeInTheDocument();
   });
 
   it('Redirect to /favorites', () => {
     const favBtn = screen.getByRole('link', { name: /Favorite Pokémons/i });
     userEvent.click(favBtn);
-    const heading = screen.getByText("Favorite pokémons");
+    const heading = screen.getByText('Favorite pokémons');
     expect(heading).toBeInTheDocument();
   });
 
@@ -47,8 +48,8 @@ describe('Test App component', () => {
       <Router history={ history }>
         <App />
       </Router>,
-    )
-    const heading = screen.getByText("Page requested not found");
+    );
+    const heading = screen.getByText('Page requested not found');
     expect(heading).toBeInTheDocument();
   });
 });
