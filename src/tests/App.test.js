@@ -16,7 +16,6 @@ describe('Test App component', () => {
     const home = screen.getByText('Home');
     const about = screen.getByText('About');
     const favorite = screen.getByText('Favorite Pokémons');
-
     expect(nav && home && about && favorite).toBeInTheDocument();
   });
 
