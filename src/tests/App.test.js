@@ -17,10 +17,17 @@ describe('Test App component', () => {
     expect(nav && home && about && favorite).toBeInTheDocument();
   });
 
-  it('Redirect to Home', () => {
+  it('Redirect to home "/', () => {
     const homeLink = screen.getByRole('link', { name: /home/i });
     userEvent.click(homeLink);
     const heading = screen.getByText("Encountered pokémons");
+    expect(heading).toBeInTheDocument();
+  });
+
+  it('Redirect to /about.', () => {
+    const aboutLink = screen.getByRole('link', { name: /about/i });
+    userEvent.click(aboutLink);
+    const heading = screen.getByText("About Pokédex");
     expect(heading).toBeInTheDocument();
   });
 });
