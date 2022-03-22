@@ -5,6 +5,11 @@ import About from '../components/About';
 describe('Test about page', () => {
   beforeEach(() => render(<About />));
 
+  it('Test if contains information', () => {
+    const text = screen.getByText(/This application simulates a Pokédex/i);
+    expect(text).toBeInTheDocument();
+  });
+
   it('Test about title', () => {
     const heading = screen.getByRole('heading', { name: 'About Pokédex' });
     expect(heading).toBeInTheDocument();
