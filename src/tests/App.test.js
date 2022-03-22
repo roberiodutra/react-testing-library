@@ -1,6 +1,8 @@
-import { screen } from '@testing-library/react';
+import { screen, render } from '@testing-library/react';
 import renderWithRouter from '../components/renderWithRouter';
 import userEvent from '@testing-library/user-event';
+import { createMemoryHistory } from 'history';
+import { Router } from 'react-router-dom';
 import App from '../App';
 
 describe('Test App component', () => {
@@ -35,6 +37,18 @@ describe('Test App component', () => {
     const favBtn = screen.getByRole('link', { name: /Favorite Pokémons/i });
     userEvent.click(favBtn);
     const heading = screen.getByText("Favorite pokémons");
+    expect(heading).toBeInTheDocument();
+  });
+
+  it('Redirect to NotFound', () => {
+    const history = createMemoryHistory();
+    history.push('/notfound');
+    render(
+      <Router history={ history }>
+        <App />
+      </Router>,
+    )
+    const heading = screen.getByText("Page requested not found");
     expect(heading).toBeInTheDocument();
   });
 });
