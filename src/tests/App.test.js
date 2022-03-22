@@ -5,13 +5,11 @@ import App from '../App';
 describe('Teste o componente <App.js />', () => {
   it('Teste se o topo da aplicação contém um conjunto fixo de links de navegação.', () => {
     renderWithRouter(<App />);
-    const navigation = screen.getByRole('navigation');
-    expect(navigation).toBeInTheDocument();
+    const nav = screen.getByRole('navigation');
+    const home = screen.getByText('Home');
+    const about = screen.getByText('About');
+    const favorite = screen.getByText('Favorite Pokémons');
 
-    const Home = screen.getByText('Home');
-    const About = screen.getByText('About');
-    const Favorite = screen.getByText('Favorite Pokémons');
-
-    expect(Home && About && Favorite).toBeInTheDocument();
+    expect(nav && home && about && favorite).toBeInTheDocument();
   });
 });
