@@ -24,10 +24,17 @@ describe('Test App component', () => {
     expect(heading).toBeInTheDocument();
   });
 
-  it('Redirect to /about.', () => {
+  it('Redirect to /about', () => {
     const aboutLink = screen.getByRole('link', { name: /about/i });
     userEvent.click(aboutLink);
     const heading = screen.getByText("About Pokédex");
+    expect(heading).toBeInTheDocument();
+  });
+
+  it('Redirect to /favorites', () => {
+    const favBtn = screen.getByRole('link', { name: /Favorite Pokémons/i });
+    userEvent.click(favBtn);
+    const heading = screen.getByText("Favorite pokémons");
     expect(heading).toBeInTheDocument();
   });
 });
