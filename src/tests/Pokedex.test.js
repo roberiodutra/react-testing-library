@@ -30,4 +30,11 @@ describe('Testa a pagina de Pokedex', () => {
       }
     }
   });
+
+  it('Test if pokemon filter is there', () => {
+    ['Electric', 'Fire', 'Bug', 'Poison', 'Psychic', 'Normal', 'Dragon',
+    ].forEach((type) => {
+      expect(screen.getByRole('button', { name: type })).toBeInTheDocument();
+    });
+  });
 });
