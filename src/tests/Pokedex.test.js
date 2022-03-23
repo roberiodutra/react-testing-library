@@ -41,6 +41,9 @@ describe('Testa a pagina de Pokedex', () => {
     ].forEach((type) => {
       expect(screen.getByRole('button', { name: type })).toBeInTheDocument();
     });
+
+    const button = screen.getAllByTestId('pokemon-type-button');
+    expect(button[6]).toHaveTextContent(/Dragon/i);
   });
 
   it('Test if "All" Button is visible all-time', () => {
