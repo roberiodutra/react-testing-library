@@ -23,12 +23,17 @@ describe('Testa a pagina de Pokedex', () => {
     expect(nextPokemon).toBeInTheDocument();
     const seven = 7;
 
-    for (let i = 0; i < seven; i += 1) {
+    for (let i = 0; i <= seven; i += 1) {
       userEvent.click(nextPokemon);
       if (i === seven) {
         expect(next).toHaveTextContent(/Pikachu/i);
       }
     }
+  });
+
+  it('Test if there are only one pokemon', () => {
+    const onePoke = screen.getAllByTestId('pokemon-name');
+    expect(onePoke).toHaveLength(1);
   });
 
   it('Test if pokemon filter is there', () => {
