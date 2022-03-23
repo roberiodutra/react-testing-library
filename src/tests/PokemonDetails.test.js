@@ -23,4 +23,24 @@ describe('Test the component PokemonDetails', () => {
     const notDetails = screen.queryByText(/More details/i);
     expect(notDetails).not.toBeInTheDocument();
   });
+
+  it('Test if isMap and isLocations', () => {
+    const { foundAt } = pokemon[0];
+    const detail = screen.getByRole('link', { name: /More details/i });
+    userEvent.click(detail);
+
+    const heading = screen.getByText('Game Locations of Pikachu');
+    expect(heading).toBeInTheDocument();
+
+    const locations = screen.getAllByAltText('Pikachu location');
+    expect(locations).toHaveLength(foundAt.length);
+
+    foundAt.forEach((place, i) => {
+      const local = screen.queryByText(place.location);
+      expect(local).toBeInTheDocument();
+
+      const map = screen.getAllByAltText('Pikachu location')[i];
+      expect(map).toHaveAttribute('src', place.map);
+    });
+  });
 });
