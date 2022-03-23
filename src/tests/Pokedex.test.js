@@ -47,5 +47,6 @@ describe('Testa a pagina de Pokedex', () => {
       userEvent.click(all);
       expect(all).toBeVisible();
     }
+    expect(all).toBeInTheDocument();
   });
 });
