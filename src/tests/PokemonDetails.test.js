@@ -57,5 +57,8 @@ describe('Test the component PokemonDetails', () => {
 
     userEvent.click(favBtn);
     expect(starText).not.toBeInTheDocument();
+
+    const label = screen.getByLabelText('Pokémon favoritado?');
+    expect(label).toBeInTheDocument();
   });
 });
