@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 
-describe('Testa a pagina de Pokedex', () => {
+describe('Test Pokedex page', () => {
   beforeEach(() => {
     renderWithRouter(<App />);
   });

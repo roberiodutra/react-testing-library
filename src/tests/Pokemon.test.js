@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 
-describe('Testa o componente Pokemon', () => {
+describe('Test the component Pokemon', () => {
   it('Test if a card with info is rendered', () => {
     renderWithRouter(<App />);
     const photo = 'https://cdn2.bulbagarden.net/upload/0/0a/Spr_5b_004.png';
