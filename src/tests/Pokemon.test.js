@@ -37,4 +37,19 @@ describe('Testa o componente Pokemon', () => {
     const { pathname } = history.location;
     expect(pathname).toBe('/pokemons/25');
   });
+
+  it('Test if pokemon card isFavorited with star', () => {
+    renderWithRouter(<App />);
+    const pikachuLink = screen.getByRole('link', { name: /More details/i });
+    userEvent.click(pikachuLink);
+
+    const favBtn = screen.getByRole('checkbox', { name: /Pokémon favoritado/i });
+    userEvent.click(favBtn);
+
+    const star = screen.getByRole('img', { name: /marked as favorite/i });
+    const starText = screen.getByAltText('Pikachu is marked as favorite');
+
+    expect(star && starText).toBeInTheDocument();
+    expect(star).toHaveAttribute('src', '/star-icon.svg');
+  });
 });
