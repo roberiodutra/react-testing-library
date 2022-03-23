@@ -9,7 +9,7 @@ describe('Test NotFound page', () => {
   });
 
   it('Test if h2 to be in the document', () => {
-    const heading = screen.getByRole('heading', { name: /not found/i, level: 2 })
+    const heading = screen.getByRole('heading', { name: /not found/i, level: 2 });
     expect(heading).toBeInTheDocument();
   });
 
