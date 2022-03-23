@@ -43,4 +43,19 @@ describe('Test the component PokemonDetails', () => {
       expect(map).toHaveAttribute('src', place.map);
     });
   });
+
+  it('Test if can favorite a poke in details page', () => {
+    const detail = screen.getByRole('link', { name: /More details/i });
+    userEvent.click(detail);
+
+    const favBtn = screen.getByRole('checkbox', { name: /Pokémon favoritado/i });
+    userEvent.click(favBtn);
+    expect(favBtn).toBeInTheDocument();
+
+    const starText = screen.getByAltText('Pikachu is marked as favorite');
+    expect(starText).toBeInTheDocument();
+
+    userEvent.click(favBtn);
+    expect(starText).not.toBeInTheDocument();
+  });
 });
