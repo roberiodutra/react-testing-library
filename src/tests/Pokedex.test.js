@@ -37,4 +37,15 @@ describe('Testa a pagina de Pokedex', () => {
       expect(screen.getByRole('button', { name: type })).toBeInTheDocument();
     });
   });
+
+  it('Test if "All" Button is visible all-time', () => {
+    const all = screen.getByRole('button', { name: /all/i });
+    const nextPokemon = screen.getByTestId('next-pokemon');
+    const ten = 10;
+    for (let i = 0; i <= ten; i += 1) {
+      userEvent.click(nextPokemon);
+      userEvent.click(all);
+      expect(all).toBeVisible();
+    }
+  });
 });
