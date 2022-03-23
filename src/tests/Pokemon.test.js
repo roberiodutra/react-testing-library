@@ -5,11 +5,8 @@ import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 
 describe('Testa o componente Pokemon', () => {
-  beforeEach(() => {
-    renderWithRouter(<App />);
-  });
-
   it('Test if a card with info is rendered', () => {
+    renderWithRouter(<App />);
     const photo = 'https://cdn2.bulbagarden.net/upload/0/0a/Spr_5b_004.png';
     const nextPokemon = screen.getByTestId('next-pokemon');
     userEvent.click(nextPokemon);
@@ -28,5 +25,16 @@ describe('Testa o componente Pokemon', () => {
 
     const charmPic = screen.getByRole('img', { name: /Charmander sprite/i });
     expect(charmPic).toHaveAttribute('src', photo);
+  });
+
+  it('Test if link is correct', () => {
+    const { history } = renderWithRouter(<App />);
+
+    const pikachuLink = screen.getByRole('link', { name: /More details/i });
+    expect(pikachuLink).toHaveAttribute('href', '/pokemons/25');
+    userEvent.click(pikachuLink);
+
+    const { pathname } = history.location;
+    expect(pathname).toBe('/pokemons/25');
   });
 });
